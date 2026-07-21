@@ -8,7 +8,7 @@ class Program
             
             Console.Write("$ ");
             string command = Console.ReadLine()!;
-            Console.Write($"{command}: command not found");
+            Console.WriteLine($"{command}: command not found");
 
         }        
     }
