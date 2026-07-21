@@ -4,6 +4,6 @@ class Program
     {
         Console.Write("$");
         string command = Console.ReadLine();
-        Console.Write($"{command}: command not found")
+        Console.Write($"{command}: command not found");
     }
 }
