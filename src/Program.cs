@@ -21,13 +21,11 @@ class Program
                     if(c_arg != "echo")
                     {
                         Console.Write($"{c_arg} ");
-
                     }
 
                 }
                 Console.Write("\n");
-                    
-            
+                continue;
             }
             Console.WriteLine($"{command}: command not found");
 
