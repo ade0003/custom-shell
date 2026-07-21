@@ -9,25 +9,50 @@ class Program
         {
             Console.Write("$ ");
             string command = Console.ReadLine()!;
-            if(command == "exit")
+
+
+            if (command.Contains("type"))
             {
-                break;
-            }
-            if (command.Contains("echo"))
-            {
-                string[] commandArray = command.Split(' ');
-                foreach (string c_arg in commandArray)
+                string[] typeArray = command.Split(' ');
+
+                if(typeArray[1] == "echo" || typeArray[1] == "exit" || typeArray[1] == "type")
                 {
-                    if(c_arg != "echo")
-                    {
-                        Console.Write($"{c_arg} ");
-                    }
+                    Console.WriteLine($"{typeArray[1]} is a shell builtin");
+                }
+                else
+                {
+                    Console.WriteLine($"{typeArray[1]}: not found");
 
                 }
-                Console.Write("\n");
-                continue;
             }
-            Console.WriteLine($"{command}: command not found");
+            else
+            {
+                        
+                if(command == "exit")
+                {
+                    break;
+                }
+                if (command.Contains("echo"))
+                {
+                    string[] commandArray = command.Split(' ');
+                    foreach (string c_arg in commandArray)
+                    {
+                        if(c_arg != "echo")
+                        {
+                            Console.Write($"{c_arg} ");
+                        }
+
+                    }
+                    Console.Write("\n");
+                    continue;
+                }
+
+                else
+                {          
+                      Console.WriteLine($"{command}: command not found");
+                    
+                }
+            }
 
         }        
     }
