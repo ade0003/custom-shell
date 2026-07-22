@@ -40,7 +40,7 @@ class Program
                             {
                                 
                                 Console.WriteLine($"{typeArray[1]} is {fullPath}");
-                                break;
+                                continue;
                             }
                             else
                             {
