@@ -32,7 +32,6 @@ class Program
                         string fullPath  = Path.Combine(path, typeArray[1]);
                         if (!File.Exists(fullPath))
                         {
-                            Console.WriteLine($"{typeArray[1]}: not found");
                             continue;
                         }
                         else
@@ -50,7 +49,8 @@ class Program
                             ;
                             
                         }
-                    
+                          Console.WriteLine($"{typeArray[1]}: not found");
+
 
                     }
                     continue;
