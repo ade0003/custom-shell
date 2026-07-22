@@ -18,9 +18,13 @@ class Program
                 if(typeArray[1] == "echo" || typeArray[1] == "exit" || typeArray[1] == "type")
                 {
                     Console.WriteLine($"{typeArray[1]} is a shell builtin");
+                    continue;
                 }
                 else
                 {
+                    string? filePath = Environment.GetEnvironmentVariable("PATH");
+                    string[] paths = filePath!.Split(Path.PathSeparator);
+                    Console.WriteLine(paths);
                     Console.WriteLine($"{typeArray[1]}: not found");
 
                 }
