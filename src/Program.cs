@@ -24,9 +24,12 @@ class Program
                 {
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
-                    Console.WriteLine(paths);
-                    Console.WriteLine($"{typeArray[1]}: not found");
+                    foreach(string path in paths)
+                    {
+                       Console.WriteLine(path);
+                    }
 
+                    Console.WriteLine($"{typeArray[1]}: not found");
                 }
             }
             else
