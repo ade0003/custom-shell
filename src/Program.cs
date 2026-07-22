@@ -24,9 +24,27 @@ class Program
                 {
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
+                    
                     foreach(string path in paths)
                     {
-                       Console.WriteLine(path);
+                        
+                        string fullPath  = Path.Combine(path, typeArray[1]);
+                        if (!File.Exists(fullPath))
+                        {
+                            
+                            continue;
+                        }
+                        else
+                        {
+                            if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
+                            {
+                                
+                                Console.WriteLine($"{typeArray[1]} is {fullPath}");
+                                continue;
+                            }
+                            else continue;
+                            
+                        }
                     }
 
                     Console.WriteLine($"{typeArray[1]}: not found");
