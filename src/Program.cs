@@ -22,6 +22,7 @@ class Program
                 }
                 else
                 {
+
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
                     
@@ -46,6 +47,7 @@ class Program
                         }
 
                     }
+                    Console.WriteLine($"{typeArray[1]}: not found");
                     continue;
                 }
             }
