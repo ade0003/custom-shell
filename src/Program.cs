@@ -40,12 +40,17 @@ class Program
                             {
                                 
                                 Console.WriteLine($"{typeArray[1]} is {fullPath}");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{typeArray[1]}: not found");
                                 continue;
                             }
-                            else continue;
+                            ;
                             
                         }
-                    Console.WriteLine($"{typeArray[1]}: not found");
+                    
 
                     }
                     continue;
