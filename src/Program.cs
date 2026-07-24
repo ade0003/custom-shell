@@ -24,7 +24,7 @@ class Program
 
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
-                    string result = checkForFiLe(paths, typeArray, filePath);
+                    string result = checkForFile(paths, typeArray);
                     if (result == "not found")
                     {
                         Console.WriteLine($"{typeArray[1]} not found");
@@ -70,11 +70,11 @@ class Program
 
 
 
-    string CheckForFiLe(string [] paths, string[] typeArray, string filePath)
+    string checkForFile(string [] paths, string[] typeArray)
     {
         foreach(string path in paths)
             {
-                string fullPath  = Path.Combine(filePath, typeArray[1]);
+                string fullPath  = Path.Combine(path, typeArray[1]);
                     if (!File.Exists(fullPath))
                     {
                         continue;
