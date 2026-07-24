@@ -25,36 +25,15 @@ class Program
 
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
-                    
-                    foreach(string path in paths)
+                    string result = checkForFiLe(paths, typeArray);
+                    if (result == "not found")
                     {
-                        
-                        string fullPath  = Path.Combine(path, typeArray[1]);
-                        if (!File.Exists(fullPath))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
-                            {
-                                
-                                Console.WriteLine($"{typeArray[1]} is {fullPath}");
-                                continue;
-                            }
-                            else
-                            {
-                                Console.WriteLine($"{typeArray[1]}: not found");
-                                continue;
-                            }
-                            ;
-                            
-                        }
-
-
+                        Console.WriteLine($"{typeArray[1]} not found");
                     }
-                                        
-;
+                    else
+                    {
+                        Console.WriteLine(result);
+                    }
                 }
             }
             else
@@ -87,5 +66,41 @@ class Program
             }
 
         }        
+    }
+
+
+
+
+    string CheckForFiLe(string [] paths, string[] typeArray)
+    {
+        
+        foreach(string path in paths)
+                        {
+                            
+                            string fullPath  = Path.Combine(path, typeArray[1]);
+                            if (!File.Exists(fullPath))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
+                                {
+                                    
+                                    return typeArray[1] + "is" + fullPath;
+                                    
+                                }
+                                else
+                                {
+                                    
+                                    continue;
+                                }
+                                
+                                
+                            }
+
+
+                        }
+                        return "not found";
     }
 }
