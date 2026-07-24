@@ -1,4 +1,3 @@
-using System.Diagnostics.Tracing;
 
 class Program
 {
@@ -25,7 +24,7 @@ class Program
 
                     string? filePath = Environment.GetEnvironmentVariable("PATH");
                     string[] paths = filePath!.Split(Path.PathSeparator);
-                    string result = checkForFiLe(paths, typeArray);
+                    string result = checkForFiLe(paths, typeArray, filePath);
                     if (result == "not found")
                     {
                         Console.WriteLine($"{typeArray[1]} not found");
@@ -71,36 +70,32 @@ class Program
 
 
 
-    string CheckForFiLe(string [] paths, string[] typeArray)
+    string CheckForFiLe(string [] paths, string[] typeArray, string filePath)
     {
-        
         foreach(string path in paths)
+            {
+                string fullPath  = Path.Combine(filePath, typeArray[1]);
+                    if (!File.Exists(fullPath))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
                         {
                             
-                            string fullPath  = Path.Combine(path, typeArray[1]);
-                            if (!File.Exists(fullPath))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
-                                {
-                                    
-                                    return typeArray[1] + "is" + fullPath;
-                                    
-                                }
-                                else
-                                {
-                                    
-                                    continue;
-                                }
-                                
-                                
-                            }
-
-
+                            return typeArray[1] + "is" + fullPath;
+                            
                         }
-                        return "not found";
+                        else
+                        {
+                            continue;
+                        }
+                        
+                        
+                    }
+
+            }
+            return "not found";
     }
 }
