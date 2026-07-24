@@ -70,7 +70,7 @@ class Program
 
 
 
-    string checkForFile(string [] paths, string[] typeArray)
+    staticstring checkForFile(string [] paths, string[] typeArray)
     {
         foreach(string path in paths)
             {
@@ -84,7 +84,7 @@ class Program
                         if (File.GetUnixFileMode(fullPath).HasFlag(UnixFileMode.UserExecute))
                         {
                             
-                            return typeArray[1] + "is" + fullPath;
+                            return $"{typeArray[1]} is {fullPath}";
                             
                         }
                         else
