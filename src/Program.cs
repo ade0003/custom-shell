@@ -27,7 +27,7 @@ class Program
                     string result = checkForFile(paths, typeArray);
                     if (result == "not found")
                     {
-                        Console.WriteLine($"{typeArray[1]} not found");
+                        Console.WriteLine($"{typeArray[1]}: not found");
                     }
                     else
                     {
@@ -70,7 +70,7 @@ class Program
 
 
 
-    staticstring checkForFile(string [] paths, string[] typeArray)
+    static string checkForFile(string [] paths, string[] typeArray)
     {
         foreach(string path in paths)
             {
